@@ -1,0 +1,37 @@
+Question 1 
+Ans : --iidfile string
+
+Question 2
+Ans : 3 packages
+Solution : docker run -it python:3.9 /bin/bash and then run "pip list"
+
+Question 3
+Ans: 20530
+Solution: 
+  select count(*) from trip_data
+  where lpep_pickup_datetime >= '2019-01-15 00:00:00' and lpep_dropoff_datetime < '2019-01-16 00:00:00' 
+
+Question 4
+Ans: 2019-01-15
+Solution :
+  select * from trip_data
+  order by trip_distance desc
+  limit 1
+
+Question 5:
+Ans: 2: 1282 ; 3: 254
+Solution:
+  select count(*),passenger_count from trip_data
+  where lpep_pickup_datetime >= '2019-01-01 00:00:00' and lpep_pickup_datetime <= '2019-01-02 00:00:00'
+  and (passenger_count = 3 or passenger_count = 2)
+  group by passenger_count
+
+Question 6
+Ans: long island
+Solution:
+  select * from trip_data
+  join zone_lookup on "DOLocationID" = zone_lookup."LocationID"
+  where "PULocationID"=7
+  order by trip_data.tip_amount desc
+  limit 1
+
